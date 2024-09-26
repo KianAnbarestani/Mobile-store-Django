@@ -1,0 +1,53 @@
+{% extends 'inventory/base.html' %}
+{% block content %}
+<div class="card">
+    <div class="card-header">
+        <h2>Add Phone</h2>
+    </div>
+    <div class="card-body">
+        <form method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="id_brand">Brand:</label>
+                {{ form.brand }}
+            </div>
+            <div class="form-group">
+                <label for="id_model">Model:</label>
+                {{ form.model }}
+            </div>
+            <div class="form-group">
+                <label for="id_price">Price:</label>
+                {{ form.price }}
+            </div>
+            <div class="form-group">
+                <label for="id_color">Color:</label>
+                {{ form.color }}
+            </div>
+            <div class="form-group">
+                <label for="id_screen_size">Screen Size:</label>
+                {{ form.screen_size }}
+            </div>
+            <div class="form-group">
+                <label for="id_manufacturer_country">Manufacturer Country:</label>
+                {{ form.manufacturer_country }}
+            </div>
+            <div class="form-group">
+                <label for="id_quantity">Quantity:</label>
+                {{ form.quantity }}
+            </div>
+            <button type="submit" class="btn btn-primary">Save</button>
+            {% if form.errors %}
+                <div class="alert alert-danger mt-3" role="alert">
+                    <ul>
+                    {% for field, errors in form.errors.items %}
+                        {% for error in errors %}
+                            <li>{{ error }}</li>
+                        {% endfor %}
+                    {% endfor %}
+                    </ul>
+                </div>
+            {% endif %}
+        </form>
+    </div>
+</div>
+{% endblock %}

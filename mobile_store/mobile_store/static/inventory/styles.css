@@ -1,0 +1,42 @@
+body {
+    background-color: #f8f9fa;/
+}
+
+.navbar {
+    background-color: #001f3f;
+}
+
+.navbar-brand, .nav-link {
+    color: #ffffff !important; 
+}
+
+.card {
+    border: 1px solid #001f3f;
+    margin-bottom: 20px;
+}
+
+.card-header {
+    background-color: #001f3f;
+    color: #ffffff; 
+}
+
+.list-group-item {
+    background-color: #f8f9fa;
+}
+
+.btn-primary {
+    background-color: #001f3f;
+    border-color: #001f3f; 
+}
+
+header, footer {
+    background-color: #001f3f;
+}
+
+footer p {
+    margin: 0; 
+}
+
+.container {
+    margin-top: 20px; 
+}

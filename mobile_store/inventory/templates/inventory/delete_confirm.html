@@ -1,0 +1,17 @@
+{% extends 'inventory/base.html' %}
+{% load custom_tags %}
+{% block content %}
+<div class="card">
+    <div class="card-header">
+        <h2>Confirm Deletion</h2>
+    </div>
+    <div class="card-body">
+        <p>Are you sure you want to delete "{{ object }}"?</p>
+        <form method="post">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger">Yes, delete</button>
+            <a href="{% if object|is_phone %}{% url 'phone_list' %}{% elif object|is_brand %}{% url 'brand_list' %}{% endif %}" class="btn btn-secondary">Cancel</a>
+        </form>
+    </div>
+</div>
+{% endblock %}

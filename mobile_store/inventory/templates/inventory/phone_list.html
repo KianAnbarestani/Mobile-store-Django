@@ -1,0 +1,84 @@
+{% extends 'inventory/base.html' %}
+{% block content %}
+<div class="card">
+    <div class="card-header d-flex justify-content-between align-items-center">
+        <h2>Phone List</h2>
+        <form method="get" action="{% url 'phone_list' %}" class="form-inline">
+            <input name="q" class="form-control mr-sm-2 mb-2 mb-sm-0" type="search" placeholder="Search" aria-label="Search" value="{{ request.GET.q }}">
+            <button class="btn btn-outline-success my-2 my-sm-0 mb-2 mb-sm-0" type="submit">Search</button>
+            <div class="btn-group ml-2">
+                <button type="button" class="btn btn-outline-secondary dropdown-toggle mb-2 mb-sm-0" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Filter
+                </button>
+                <div class="dropdown-menu p-3">
+                    <div class="form-group">
+                        <label for="filterBrand">Brand</label>
+                        <input type="text" class="form-control" id="filterBrand" name="brand" value="{{ request.GET.brand }}">
+                    </div>
+                    <div class="form-group">
+                        <label for="filterNationality">Nationality</label>
+                        <input type="text" class="form-control" id="filterNationality" name="nationality" value="{{ request.GET.nationality }}">
+                    </div>
+                    <div class="form-group">
+                        <label for="filterManufacturingCountry">Manufacturing Country</label>
+                        <input type="text" class="form-control" id="filterManufacturingCountry" name="manufacturing_country" value="{{ request.GET.manufacturing_country }}">
+                    </div>
+                    <div class="form-group">
+                        <label for="filterColor">Color</label>
+                        <input type="text" class="form-control" id="filterColor" name="color" value="{{ request.GET.color }}">
+                    </div>
+                    <div class="form-group">
+                        <label for="filterScreenSize">Screen Size</label>
+                        <input type="text" class="form-control" id="filterScreenSize" name="screen_size" value="{{ request.GET.screen_size }}">
+                    </div>
+                    <div class="form-group">
+                        <label for="filterPriceMin">Min Price</label>
+                        <input type="number" class="form-control" id="filterPriceMin" name="price_min" value="{{ request.GET.price_min }}">
+                    </div>
+                    <div class="form-group">
+                        <label for="filterPriceMax">Max Price</label>
+                        <input type="number" class="form-control" id="filterPriceMax" name="price_max" value="{{ request.GET.price_max }}">
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Brand</th>
+                        <th>Model</th>
+                        <th>Price</th>
+                        <th>Color</th>
+                        <th>Screen Size</th>
+                        <th>Status</th>
+                        <th>Manufacturer Country</th>
+                        <th>Quantity</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for phone in phones %}
+                    <tr>
+                        <td>{{ phone.brand.name }} ({{ phone.brand.nationality }})</td>
+                        <td>{{ phone.model }}</td>
+                        <td>${{ phone.price }}</td>
+                        <td>{{ phone.color }}</td>
+                        <td>{{ phone.screen_size }}"</td>
+                        <td>{{ phone.get_status_display }}</td>
+                        <td>{{ phone.manufacturer_country }}</td>
+                        <td>{{ phone.quantity }}</td>
+                        <td>
+                            <a href="{% url 'update_phone' phone.pk %}" class="btn btn-sm btn-secondary">Update</a>
+                            <a href="{% url 'delete_phone' phone.pk %}" class="btn btn-sm btn-danger">Delete</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

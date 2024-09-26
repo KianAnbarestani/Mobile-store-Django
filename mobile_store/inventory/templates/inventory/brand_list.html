@@ -1,0 +1,17 @@
+{% extends 'inventory/base.html' %}
+{% block content %}
+<div class="card">
+    <div class="card-header">
+        <h2>Brand List</h2>
+    </div>
+    <ul class="list-group list-group-flush">
+        {% for brand in brands %}
+        <li class="list-group-item">
+            {{ brand.name }} ({{ brand.nationality }})
+            <a href="{% url 'update_brand' brand.pk %}" class="btn btn-sm btn-secondary float-right ml-2">Update</a>
+            <a href="{% url 'delete_brand' brand.pk %}" class="btn btn-sm btn-danger float-right">Delete</a>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}
