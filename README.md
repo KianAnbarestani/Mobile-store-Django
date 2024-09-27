@@ -1,7 +1,7 @@
 
 # 📱 Mobile Store Inventory with Django
 
-![Django](https://img.shields.io/badge/Django-3.2.7-green.svg) ![Python](https://img.shields.io/badge/Python-3.8-blue.svg) ![SQLite](https://img.shields.io/badge/SQLite-3-lightgrey.svg)
+![Django](https://img.shields.io/badge/Django-3.2.7-green.svg) ![Python](https://img.shields.io/badge/Python-3.11-blue.svg) ![SQLite](https://img.shields.io/badge/SQLite-3-lightgrey.svg)
 
 ## 🚀 Overview
 
