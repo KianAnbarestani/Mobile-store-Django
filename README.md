@@ -1,112 +1,129 @@
-# Mobile Store Inventory Management Project
 
-## Overview
+# 📱 Mobile Store Inventory with Django
 
-The Mobile Store Inventory Management project is a web application developed using Django, a high-level Python web framework. This application serves as an inventory management system for mobile phones, allowing users to add, update, delete, and search for mobile phones and brands. The project utilizes a responsive design to ensure usability across various devices, including desktops, tablets, and smartphones.
+![Django](https://img.shields.io/badge/Django-3.2.7-green.svg) ![Python](https://img.shields.io/badge/Python-3.8-blue.svg) ![SQLite](https://img.shields.io/badge/SQLite-3-lightgrey.svg)
 
-## Project Functionality
+## 🚀 Overview
 
-### How the Project Works
+This is a Django-based inventory management system for a mobile store. It allows store owners to manage their mobile products, including adding new items, updating product information, and removing items from the inventory. This project is ideal for small mobile stores to keep track of their stock and manage products efficiently.
 
-This application provides the following functionalities:
-1. **Brand Management**: Users can add, update, and delete brands. Each brand includes a name and nationality.
-2. **Phone Management**: Users can add, update, and delete phones. Each phone is associated with a brand and includes details such as model, price, color, screen size, status, manufacturer country, and quantity.
-3. **Search and Filter**: Users can search and filter phones based on various criteria such as brand, nationality, manufacturing country, color, screen size, and price range. A dynamic filter system allows users to apply multiple filters simultaneously.
-4. **Responsive Design**: The application is designed to be responsive, ensuring a seamless user experience across all devices.
+## 🛠 Features
 
-### What Has Been Done
+- 📦 **Manage Product Inventory**: Add, update, and delete mobile products.
+- 🔍 **Search Functionality**: Quickly find products in the inventory.
+- 📊 **Dashboard**: Visual representation of the inventory with product counts.
+- 🔐 **Authentication**: Secure login for store managers.
+- 🗃️ **Database**: Uses SQLite for simple and fast database operations.
 
-1. **Model Definition**:
-   - Defined `Brand` and `Phone` models with appropriate fields.
-   - Implemented validation to ensure unique brand names and phone models.
-2. **Form Handling**:
-   - Created forms for adding and updating brands and phones.
-   - Added custom validation in forms to prevent negative values for price, quantity, and screen size.
-3. **Views**:
-   - Implemented views for listing, adding, updating, and deleting brands and phones.
-   - Developed a comprehensive search and filter functionality in the `phone_list` view.
-4. **Templates**:
-   - Designed responsive templates using Bootstrap for a clean and professional look.
-   - Added a dynamic filter system in the `phone_list` template.
-5. **Custom Template Tags**:
-   - Created custom template tags to differentiate between brands and phones in the delete confirmation template.
-6. **Responsive Design**:
-   - Ensured the project is responsive by using Bootstrap's grid system and responsive classes.
+## 📂 Project Structure
 
-## How to Set Up the Project
+```
+Mobile-store-Django/
+├── inventory/           # Application files for managing products
+│   ├── migrations/      # Database migrations
+│   ├── static/          # Static files (CSS, JS, Images)
+│   ├── templates/       # HTML templates for the app
+│   ├── admin.py         # Django admin configurations
+│   ├── apps.py          # Application configuration
+│   ├── models.py        # Database models for products
+│   ├── urls.py          # URL routing for the app
+│   └── views.py         # Views for handling requests
+├── venv/                # Virtual environment for the project
+├── .env                 # Environment variables
+├── .gitignore           # Git ignore file
+├── Dockerfile           # Docker configuration
+├── docker-compose.yml   # Docker Compose configuration
+├── entrypoint.sh        # Entrypoint script for Docker
+├── manage.py            # Django's command-line utility
+├── mobile.db            # SQLite database file
+└── requirements.txt     # Python dependencies
+```
+
+## 🚀 Getting Started
 
 ### Prerequisites
 
-1. **Python 3.x**: Version 3.6 or higher is recommended.
-2. **Django**: Version 3.2.10
+- Python 3.8+
+- Django 3.2.7
+- SQLite
 
 ### Installation
 
-1. Clone the project repository:
-   ```bash
-   git clone <repository-url>
-   cd mobile_store
+1. Clone the repository:
 
+    ```bash
+    git clone https://github.com/yourusername/Mobile-store-Django.git
+    cd Mobile-store-Django
+    ```
 
-## 🚀 Deployment
+2. Create and activate a virtual environment:
 
-### Local Deployment
+    ```bash
+    python3 -m venv venv
+    source venv/bin/activate
+    ```
 
-1. Ensure all dependencies are installed by running:
+3. Install the dependencies:
 
     ```bash
     pip install -r requirements.txt
     ```
 
-2. Start the FastAPI server locally:
+4. Apply database migrations:
 
     ```bash
-    uvicorn main:app --reload
+    python manage.py migrate
     ```
 
-3. Access the application at [http://127.0.0.1:8000](http://127.0.0.1:8000).
+5. Create a superuser to access the admin panel:
 
-### Docker Deployment
+    ```bash
+    python manage.py createsuperuser
+    ```
+
+6. Run the application:
+
+    ```bash
+    python manage.py runserver
+    ```
+
+7. Access the application:
+
+   - Open your browser and navigate to [http://127.0.0.1:8000](http://127.0.0.1:8000).
+   - Access the admin panel at [http://127.0.0.1:8000/admin](http://127.0.0.1:8000/admin).
+
+## 🐳 Docker Deployment
 
 1. Build the Docker image:
 
     ```bash
-    docker build -t todo-list-fastapi .
+    docker build -t mobile-store-django .
     ```
 
 2. Run the Docker container:
 
     ```bash
-    docker run -d --name todo-list -p 8000:8000 todo-list-fastapi
+    docker-compose up -d
     ```
 
 3. Access the application at [http://127.0.0.1:8000](http://127.0.0.1:8000).
 
-### Deployment on Heroku
+## 📝 License
 
-1. Create a `Procfile` in the root directory with the following content:
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-    ```
-    web: uvicorn main:app --host=0.0.0.0 --port=${PORT:-8000}
-    ```
+## 🤝 Contributing
 
-2. Login to Heroku:
+1. Fork the project.
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`).
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`).
+4. Push to the branch (`git push origin feature/AmazingFeature`).
+5. Open a Pull Request.
 
-    ```bash
-    heroku login
-    ```
+## 💬 Contact
 
-3. Create a new Heroku app:
+- **Author**: Kian Anbarestani
+- **Email**: [your-email@example.com](mailto:your-email@example.com)
+- **GitHub**: [KianAnbarestani](https://github.com/KianAnbarestani)
 
-    ```bash
-    heroku create todo-list-fastapi
-    ```
-
-4. Push the code to Heroku:
-
-    ```bash
-    git push heroku main
-    ```
-
-5. Access the application at your Heroku app URL.
-
+Feel free to open an issue if you find a bug or have suggestions for improvements!
