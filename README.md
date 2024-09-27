@@ -46,3 +46,67 @@ This application provides the following functionalities:
    ```bash
    git clone <repository-url>
    cd mobile_store
+
+
+## 🚀 Deployment
+
+### Local Deployment
+
+1. Ensure all dependencies are installed by running:
+
+    ```bash
+    pip install -r requirements.txt
+    ```
+
+2. Start the FastAPI server locally:
+
+    ```bash
+    uvicorn main:app --reload
+    ```
+
+3. Access the application at [http://127.0.0.1:8000](http://127.0.0.1:8000).
+
+### Docker Deployment
+
+1. Build the Docker image:
+
+    ```bash
+    docker build -t todo-list-fastapi .
+    ```
+
+2. Run the Docker container:
+
+    ```bash
+    docker run -d --name todo-list -p 8000:8000 todo-list-fastapi
+    ```
+
+3. Access the application at [http://127.0.0.1:8000](http://127.0.0.1:8000).
+
+### Deployment on Heroku
+
+1. Create a `Procfile` in the root directory with the following content:
+
+    ```
+    web: uvicorn main:app --host=0.0.0.0 --port=${PORT:-8000}
+    ```
+
+2. Login to Heroku:
+
+    ```bash
+    heroku login
+    ```
+
+3. Create a new Heroku app:
+
+    ```bash
+    heroku create todo-list-fastapi
+    ```
+
+4. Push the code to Heroku:
+
+    ```bash
+    git push heroku main
+    ```
+
+5. Access the application at your Heroku app URL.
+
